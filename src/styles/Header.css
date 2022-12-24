@@ -1,6 +1,6 @@
 header {
   align-items: center;
-  /* background-color: #2b5166; */
+  background-color: rgb(190, 70, 70);
   color: white;
   display: flex;
   font-weight: bolder;
@@ -8,5 +8,6 @@ header {
   font-size: 40px;
   height: 50px;
   justify-content: center;
+  margin-bottom: 30px;
   width: 100%;
 }

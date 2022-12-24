@@ -8,20 +8,26 @@ export const functionClock = (setClock) => {
   });
 };
 
-export const functionTimer = (setTimer) => {
+export const functionTimer = (setTimer, setIsDisabled) => {
+  setIsDisabled({ s: true, p: false, r: false });
   return setInterval(() =>
-    setTimer(({ h, m, s }) => {
-      if (h === 24) return { h: 0, m: 0, s: 0 };
-      if (m === 60) return { h: h + 1, m: 0, s: s };
-      if (s === 60) return { h: h, m: m + 1, s: 0 };
+    setTimer(({ m, s }) => {
+      if (m === 59) return { m: 0, s: s };
+      if (s === 59) return { m: m + 1, s: 0 };
   
-      return { h: h, m: m, s: s + 1 };
+      return { m: m, s: s + 1 };
   }), 1000);
 };
 
-export const functionResetTimer = (setTimer, setPower) => {
+export const functionStopTimer = (setIsDisabled, setPower) => {
+  setPower(false);
+  setIsDisabled({ s: false, p: true, reset: false });
+}
+
+export const functionResetTimer = (setTimer, setPower, setIsDisabled) => {
   setPower(false);
   setTimer({ h: 0, m: 0, s: 0 });
+  setIsDisabled({ s: false, p: true, r: true });
 };
 
 export const functionRoute = (push, path, setPath) => {
