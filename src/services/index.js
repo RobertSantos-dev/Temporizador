@@ -23,3 +23,8 @@ export const functionResetTimer = (setTimer, setPower) => {
   setPower(false);
   setTimer({ h: 0, m: 0, s: 0 });
 };
+
+export const functionRoute = (push, path, setPath) => {
+  if (path === '/') { push('/timer'); setPath('/timer'); }
+  else { push('/'); setPath('/'); };
+};

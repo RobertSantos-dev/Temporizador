@@ -12,7 +12,7 @@ function Timer() {
   }, [power]);
 
   return (
-    <main>
+    <div>
       <div>
         <span>{ timer.h < 10 ? `0${timer.h}` : timer.h }</span>
         <span>{ timer.m < 10 ? `0${timer.m}` : timer.m }</span>
@@ -25,7 +25,7 @@ function Timer() {
           reset
         </button>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -9,13 +9,11 @@ function Clock() {
   }, []);
 
   return (
-    <main>
-      <div>
-        <span>{ clock.h < 10 ? `0${clock.h}` : clock.h }</span>
-        <span>{ clock.m < 10 ? `0${clock.m}` : clock.m }</span>
-        <span>{ clock.s < 10 ? `0${clock.s}` : clock.s }</span>
-      </div>
-    </main>
+    <div>
+      <span>{ clock.h < 10 ? `0${clock.h}` : clock.h }:</span>
+      <span>{ clock.m < 10 ? `0${clock.m}` : clock.m }:</span>
+      <span>{ clock.s < 10 ? `0${clock.s}` : clock.s }</span>
+    </div>
   );
 };
 
