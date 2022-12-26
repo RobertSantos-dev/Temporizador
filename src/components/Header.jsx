@@ -3,7 +3,9 @@ import '../styles/Header.css';
 
 function Header() {
   return (
-    <header>Tempo</header>
+    <header>
+      <h1>Tempo</h1>
+    </header>
   );
 };
 
