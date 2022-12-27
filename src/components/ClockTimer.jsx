@@ -17,6 +17,7 @@ function ClockTimer() {
       <div className='div-btns'>
       <button
         className='btn-route'
+        data-testid='btn-clock'
         style={ isDisabled.b1 ? buttonConditionsTrue : buttonConditionsFalse }
         disabled={ isDisabled.b1 }
         onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
@@ -25,6 +26,7 @@ function ClockTimer() {
       </button>
       <button
         className='btn-route'
+        data-testid='btn-stopwatch'
         style={ isDisabled.b2 ? buttonConditionsTrue : buttonConditionsFalse }
         disabled={ isDisabled.b2 }
         onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
