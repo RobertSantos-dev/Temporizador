@@ -1,3 +1,16 @@
+// Estilos de botões condicionais
+export const buttonConditionsTrue = {
+  backgroundColor: 'white',
+  color: 'black',
+};
+
+export const buttonConditionsFalse = {
+  backgroundColor: 'black',
+  color: 'white',
+  opacity: '0.7',
+};
+
+// Funções usadas nos componentes e botões
 export const functionClock = (setClock) => {
   let data = new Date;
 
@@ -30,7 +43,14 @@ export const functionResetTimer = (setTimer, setPower, setIsDisabled) => {
   setIsDisabled({ s: false, p: true, r: true });
 };
 
-export const functionRoute = (push, path, setPath) => {
-  if (path === '/') { push('/timer'); setPath('/timer'); }
-  else { push('/'); setPath('/'); };
+export const functionRoute = (push, path, setPath, setIsDisabled) => {
+  if (path === '/') {
+    push('/timer');
+    setPath('/timer');
+    setIsDisabled({ b1: false, b2: true });
+  } else {
+    push('/');
+    setPath('/');
+    setIsDisabled({ b1: true, b2: false });
+  };
 };

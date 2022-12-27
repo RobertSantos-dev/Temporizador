@@ -4,7 +4,7 @@ main {
   width: 100%;
 }
 
-main, .div-clock {
+main, .div-clock, .div-btns {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -20,17 +20,29 @@ main, .div-clock {
   width: 90%;
 }
 
+.div-btns {
+  width: 150px;
+  filter: drop-shadow(0 0 20px red);
+  /* box-shadow: 0 0 40px red; */
+}
+
 .btn-route {
   background-color: #000000;
-  border-radius: 20px;
-  box-shadow: 0 0 40px red;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 30px;
   font-weight: bolder;
   height: 50px;
   margin-bottom: 20px;
-  width: 150px;
+  flex-grow: 1;
+}
+
+.btn-route:nth-child(1) {
+  border-radius: 20px 0 0 20px;
+}
+
+.btn-route:nth-child(2) {
+  border-radius: 0 20px 20px 0;
 }
 
 .div-clock span {

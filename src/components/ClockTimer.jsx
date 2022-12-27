@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
+import { BsStopwatchFill, BsClockFill } from 'react-icons/bs';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
 import Clock from '../pages/Clock';
 import Timer from '../pages/Timer';
 import '../styles/Clock.css';
-import { functionRoute } from '../services';
+import { functionRoute, buttonConditionsTrue, buttonConditionsFalse } from '../services';
 
 function ClockTimer() {
   const { location: { pathname }, push } = useHistory();
   const [path, setPath] = useState(pathname);
+  const [isDisabled, setIsDisabled] = useState({ b1: true, b2: false });
 
   return (
     <main>
+      <div className='div-btns'>
       <button
         className='btn-route'
-        onClick={ () => functionRoute(push, path, setPath) }
+        style={ isDisabled.b1 ? buttonConditionsTrue : buttonConditionsFalse }
+        disabled={ isDisabled.b1 }
+        onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
       >
-        { path === '/' ? 'STOPWATCH' : 'CLOCK' }
+        <BsClockFill />
       </button>
+      <button
+        className='btn-route'
+        style={ isDisabled.b2 ? buttonConditionsTrue : buttonConditionsFalse }
+        disabled={ isDisabled.b2 }
+        onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
+      >
+        <BsStopwatchFill />
+      </button>
+      </div>
       <div className='div-clock'>
         <div className='title-function'>
           <p>{ path === '/' ? 'CLOCK' : 'STOPWATCH' }</p>
