@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsStopwatchFill, BsClockFill } from 'react-icons/bs';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
@@ -10,7 +10,12 @@ import { functionRoute, buttonConditionsTrue, buttonConditionsFalse } from '../s
 function ClockTimer() {
   const { location: { pathname }, push } = useHistory();
   const [path, setPath] = useState(pathname);
-  const [isDisabled, setIsDisabled] = useState({ b1: true, b2: false });
+  const [isDisabled, setIsDisabled] = useState({});
+
+  useEffect(() => {
+    if (path === '/') setIsDisabled({ b1: true, b2: false });
+    else setIsDisabled({ b1: false, b2: true });
+  }, [path]);
 
   return (
     <main>
@@ -20,7 +25,7 @@ function ClockTimer() {
         data-testid='btn-clock'
         style={ isDisabled.b1 ? buttonConditionsTrue : buttonConditionsFalse }
         disabled={ isDisabled.b1 }
-        onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
+        onClick={ () => functionRoute(push, path, setPath) }
       >
         <BsClockFill />
       </button>
@@ -29,7 +34,7 @@ function ClockTimer() {
         data-testid='btn-stopwatch'
         style={ isDisabled.b2 ? buttonConditionsTrue : buttonConditionsFalse }
         disabled={ isDisabled.b2 }
-        onClick={ () => functionRoute(push, path, setPath, setIsDisabled) }
+        onClick={ () => functionRoute(push, path, setPath) }
       >
         <BsStopwatchFill />
       </button>
@@ -39,8 +44,12 @@ function ClockTimer() {
           <p>{ path === '/' ? 'CLOCK' : 'STOPWATCH' }</p>
         </div>
         <Switch>
-          <Route path='/timer' component={ Timer } />
-          <Route exact path='/' component={ Clock } />
+          <Route
+            path='/timer'
+            render={ (props) => <Timer {...props} setPath={ setPath } /> } />
+          <Route
+            exact path='/'
+            render={ (props) => <Clock {...props} setPath={ setPath } /> } />
         </Switch>
       </div>
     </main>

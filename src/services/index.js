@@ -43,14 +43,12 @@ export const functionResetTimer = (setTimer, setPower, setIsDisabled) => {
   setIsDisabled({ s: false, p: true, r: true });
 };
 
-export const functionRoute = (push, path, setPath, setIsDisabled) => {
+export const functionRoute = (push, path, setPath) => {
   if (path === '/') {
     push('/timer');
     setPath('/timer');
-    setIsDisabled({ b1: false, b2: true });
   } else {
     push('/');
     setPath('/');
-    setIsDisabled({ b1: true, b2: false });
   };
 };

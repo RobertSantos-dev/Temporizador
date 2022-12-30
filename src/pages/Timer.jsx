@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { functionTimer, functionStopTimer, functionResetTimer } from '../services';
 
 import '../styles/Timer.css';
 
-function Timer() {
+function Timer({ setPath }) {
+  const { location: { pathname } } = useHistory();
   const [timer, setTimer] = useState({ m: 0, s: 0 });
   const [control, setControl] = useState();
   const [isDisabled, setIsDisabled] = useState({ s: false, p: true, r: true });
@@ -13,6 +15,8 @@ function Timer() {
     if (power) setControl(functionTimer(setTimer, setIsDisabled));
     if (!power) clearInterval(control);
   }, [power]);
+
+  useEffect(() => { setPath(pathname); }, []);
 
   return (
     <div>

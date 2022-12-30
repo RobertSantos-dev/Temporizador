@@ -1,16 +1,17 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen, act, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BUTTON_START, BUTTON_STOP, BUTTON_RESET } from "./utils/variables";
 import renderWithRouter from "./utils/renderWithRouter";
-import Timer from '../pages/Timer';
+import App from '../App';
 
 describe('Testes nos botões do cronometro', () => {
-  beforeEach(() => {
-    renderWithRouter(<Timer />);
-  })
+  // beforeEach(() => {})
 
-  it('01 - Teste se é rederizado os botões correto ', () => {
-    const buttonStart = screen.getByRole('button', { name: BUTTON_START });
+  it('01 - Teste se é rederizado os botões correto ', async () => {
+    const { history } = renderWithRouter(<App />);
+    act(() => { history.push('/timer'); });
+
+    const buttonStart = await screen.findByRole('button', { name: BUTTON_START });
     const buttonStop = screen.getByRole('button', { name: BUTTON_STOP });
     const buttonReset = screen.getByRole('button', { name: BUTTON_RESET });
 
@@ -19,8 +20,11 @@ describe('Testes nos botões do cronometro', () => {
     expect(buttonReset).toBeInTheDocument();
   });
 
-  it('02 - Teste se está habilitado ou desabilitado os botões corretos ', () => {
-    const buttonStart = screen.getByRole('button', { name: BUTTON_START });
+  it('02 - Teste se está habilitado ou desabilitado os botões corretos ', async () => {
+    const { history } = renderWithRouter(<App />);
+    act(() => { history.push('/timer'); });
+    
+    const buttonStart = await screen.findByRole('button', { name: BUTTON_START });
     const buttonStop = screen.getByRole('button', { name: BUTTON_STOP });
     const buttonReset = screen.getByRole('button', { name: BUTTON_RESET });
 
@@ -30,7 +34,10 @@ describe('Testes nos botões do cronometro', () => {
   });
 
   it('03 - Teste se está habilitado ou desabilitado os botões corretos ao serem clicados ', async () => {
-    const buttonStart = screen.getByRole('button', { name: BUTTON_START });
+    const { history } = renderWithRouter(<App />);
+    act(() => { history.push('/timer'); });
+    
+    const buttonStart = await screen.findByRole('button', { name: BUTTON_START });
     const buttonStop = screen.getByRole('button', { name: BUTTON_STOP });
     const buttonReset = screen.getByRole('button', { name: BUTTON_RESET });
 
