@@ -23,7 +23,7 @@ O projeto <strong>Temporizador</strong> foi criado com o objetivo de por em prá
 
 Ao entrar na aplicação, o usúario que estiver na Pagina Home terá acesso a um relogio digital que, após um segundo, mostrará o horário de brasília em tempo real. Nesta pagina, contem dois botões que ao clicar no que esta a direita o usuario será direcionado para a rota '/timer', onde o mesmo terá acesso a um cronômetro totalmente funcional e manipulável. E caso preferir voltar ao relógio, basta clicar no botão que está na esquerda acima do cronômetro.
 
- <strong>OBS:</strong> Neste projeto, utilizei testes de Integração 
+<strong>OBS:</strong> Neste projeto, utilizei testes de Integração 
 
 <br>
 
