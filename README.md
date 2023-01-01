@@ -14,8 +14,8 @@ Este projeto trata-se uma aplicação simples que permite o usuário ter acesso 
 
 ## Explicação
 <div align="center">
-  <img src="./img/temporizador1.png" width="45%" />
-  <img src="./img/temporizador2.png" width="45%" />
+  <img src="./img/temporizador1.png" width="75%" />
+  <img src="./img/temporizador2.png" width="75%" />
 </div>
 <br>
 
